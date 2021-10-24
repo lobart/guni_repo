@@ -4,11 +4,7 @@ def application (environ, start_response):
 
     # Returns a dictionary in which the values are lists
     d = environ['QUERY_STRING'].split("&")
-    print(d)
-    s=""
-    for el in d:
-       s = s + "%s\n"%(el)
-    response_body = s
+    response_body = "\n".join(d).encode('utf-8')
     status = '200 OK'
 
     # Now content type is text/plain
@@ -18,7 +14,7 @@ def application (environ, start_response):
     ]
 
     start_response(status, response_headers)
-    return [str.encode(response_body)]
+    return [response_body]
 
 
 
