@@ -1,5 +1,4 @@
-from wsgiref.simple_server import make_server
-import os
+
 
 def application (environ, start_response):
 
@@ -21,7 +20,6 @@ def application (environ, start_response):
     start_response(status, response_headers)
     return [str.encode(response_body)]
 
-httpd = make_server('0.0.0.0', 8080, application)
+
 
 # Now it is serve_forever() in instead of handle_request()
-httpd.serve_forever()
